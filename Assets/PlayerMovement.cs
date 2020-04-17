@@ -21,6 +21,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+
     //adding force
     private void FixedUpdate()
     {
