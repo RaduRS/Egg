@@ -21,8 +21,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-
     //adding force
     private void FixedUpdate()
     {
@@ -30,13 +28,18 @@ public class PlayerMovement : MonoBehaviour
 
         if (keyPressedRight == true)
         {
-            rb.AddForce(sideForce * Time.deltaTime, 0, 0);
+            rb.AddForce(sideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             keyPressedRight = false;
         }
         else if (keyPressedLeft == true)
         {
-            rb.AddForce(-sideForce * Time.deltaTime, 0, 0);
+            rb.AddForce(-sideForce * Time.deltaTime, 0, 0, ForceMode.VelocityChange);
             keyPressedLeft = false;
+        }
+
+        if (rb.position.y < -1)
+        {
+            FindObjectOfType<GameManager>().EndGame();
         }
     }
 }
